@@ -82,8 +82,8 @@ if [ -n "$MINIO_BUCKET" ]; then
     docker exec reusable-minio mc alias set myminio http://localhost:9000 admin admin123 >/dev/null 2>&1
     docker exec reusable-minio mc mb myminio/"$MINIO_BUCKET" 2>/dev/null
     
-    # Optional: set bucket policy to public if needed
-    # docker exec reusable-minio mc anonymous set download myminio/"$MINIO_BUCKET" 2>/dev/null
+    # Set bucket policy to public so images are browser-accessible
+    docker exec reusable-minio mc anonymous set public myminio/"$MINIO_BUCKET" 2>/dev/null
 
     if [ $? -eq 0 ]; then
         echo "✅ MinIO bucket '$MINIO_BUCKET' created successfully."
