@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Absolute path to the compose file so it can be run from anywhere
-COMPOSE_FILE="/mnt/thorne/CODEINE/reusables/docker/docker-compose.yml"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+COMPOSE_FILE="$SCRIPT_DIR/docker-compose.yml"
 CONTAINERS=""
 DB_NAME=""
 MINIO_BUCKET=""
